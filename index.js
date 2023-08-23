@@ -6,11 +6,13 @@ var x = document.querySelectorAll(".drum").length;
         document.querySelectorAll(".drum")[i].addEventListener("click", function(){
         var btn = this.innerHTML;
         makeSound(btn);
+        buttonAnimation(btn);
     });
     }
 document.addEventListener("keydown",function(event){
     
     makeSound(event.key);
+    buttonAnimation(event.key);
 });
 function makeSound(key){
     switch (key) {
@@ -46,4 +48,11 @@ function makeSound(key){
         default:console.log("Error");
             break;
     }
+}
+function buttonAnimation(currentKey){
+    var newbutton = document.querySelector("."+currentKey);
+    newbutton.classList.add("pressed");
+    setTimeout(function(){
+        newbutton.classList.remove("pressed");
+    }, 100);
 }
